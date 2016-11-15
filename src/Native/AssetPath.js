@@ -1,5 +1,9 @@
 var _NoRedInk$elm_asset_path$Native_AssetPath = function() {
-  if (typeof window === "undefined"){
+  if (typeof window === "undefined" ||
+      typeof document === "undefined" ||
+      typeof document.head === "undefined" ||
+      typeof document.head.querySelector === "undefined"
+     ) {
     return {
       rootUrl : { ctor : 'Nothing' }
     };
