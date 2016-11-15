@@ -1,4 +1,5 @@
-module AssetPath exposing (Asset(Asset), url)
+module AssetPath exposing (Asset(..), url)
+
 {-|
 Module for defining a typed asset path and obtaining its URL.
 
@@ -8,7 +9,7 @@ Module for defining a typed asset path and obtaining its URL.
 
     viewStar : Html msg
     viewStar =
-        img [ src (AssetPath.url (Asset "/assets/star.png")) ]
+        img [ src (AssetPath.url (AssetPath "/assets/star.png")) ]
             []
 
 By default, the `src` of the image will be "/assets/star.png".
@@ -22,32 +23,56 @@ you can control which host to direct requests for static assets:
 
 @docs Asset, url
 -}
+
 import String
 import Native.AssetPath
 
 
 {-| Tag a path to a static asset as such.
+
+Use `AssetUrl` to mark a fully qualified URL.
+`url` will return the tagged value as-is.
 -}
-type Asset =
-    Asset String
+type Asset
+    = AssetPath String
+    | AssetUrl String
 
 
-{- Note: does not end with a slash -}
 rootUrl : Maybe String
 rootUrl =
-  Native.AssetPath.rootUrl
+    -- Note: does not end with a slash
+    Native.AssetPath.rootUrl
 
 
-{-| Get the full URL of an asset.
+{-| Try to get the full URL of an asset.
+
+When supplied an `AssetUrl`, the tagged value is returned as-is.
+
+When supplied an `AssetPath`, the tagged value is returned as-is
+when no meta tag with the name `assets-root-url` is found.
+In case such a meta tag is found, the return value is a concatenation
+of the content attribute of the tag and the `AssetPath` value.
+
+The meta tag needs to be present at the time Elm has been loaded.
 -}
 url : Asset -> String
-url (Asset path) =
+url asset =
+    case asset of
+        AssetUrl url ->
+            url
+
+        AssetPath path ->
+            toAbsoluteUrl path
+
+
+toAbsoluteUrl : String -> String
+toAbsoluteUrl assetPath =
     case rootUrl of
         Nothing ->
-            path
+            assetPath
 
         Just host ->
-            host ++ toAbsolutePath path
+            host ++ toAbsolutePath assetPath
 
 
 toAbsolutePath : String -> String

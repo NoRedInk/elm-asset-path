@@ -18,8 +18,11 @@ all =
     describe "url"
         [ test "absolute path" <|
             \() ->
-                Expect.equal (AssetPath.url <| Asset "/star.png") "https://cdn.elm-lang.org/star.png"
-        ,  test "relative path" <|
+                Expect.equal (AssetPath.url <| AssetPath "/star.png") "https://cdn.elm-lang.org/star.png"
+        , test "relative path" <|
             \() ->
-                Expect.equal (AssetPath.url <| Asset "star.png") "https://cdn.elm-lang.org/star.png"
+                Expect.equal (AssetPath.url <| AssetPath "star.png") "https://cdn.elm-lang.org/star.png"
+        , test "url" <|
+            \() ->
+                Expect.equal (AssetPath.url <| AssetUrl "star.png") "star.png"
         ]
