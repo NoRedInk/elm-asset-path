@@ -16,7 +16,10 @@ main =
 all : Test
 all =
     describe "without assets-root-url"
-        [ test "Addition" <|
+        [ test "absolute path" <|
             \() ->
                 Expect.equal (AssetPath.url <| Asset "/star.png") "/star.png"
+        , test "relative path" <|
+            \() ->
+                Expect.equal (AssetPath.url <| Asset "star.png") "star.png"
         ]
