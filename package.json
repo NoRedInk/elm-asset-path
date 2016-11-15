@@ -4,7 +4,7 @@
   "description": "",
   "main": "",
   "scripts": {
-    "test": "./tests/build.sh && ava"
+    "test": "./tests/build.sh && ava tests/test.js"
   },
   "author": "",
   "license": "ISC",
