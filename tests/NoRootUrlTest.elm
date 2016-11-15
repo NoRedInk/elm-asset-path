@@ -6,6 +6,7 @@ import Expect
 import Json.Encode exposing (Value)
 import Ports exposing (emit)
 import AssetPath exposing (Asset(..))
+import AssetPath.Css
 
 
 main : Program Value
@@ -23,5 +24,13 @@ all =
             , test "relative path" <|
                 \() ->
                     Expect.equal (AssetPath.url <| AssetPath "star.png") "star.png"
+            ]
+        , describe "Css.url"
+            [ test "absolute path" <|
+                \() ->
+                    Expect.equal (AssetPath.Css.url <| AssetPath "/star.png") "url(/star.png)"
+            , test "relative path" <|
+                \() ->
+                    Expect.equal (AssetPath.Css.url <| AssetPath "star.png") "url(star.png)"
             ]
         ]
