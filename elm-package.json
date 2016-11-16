@@ -7,7 +7,8 @@
         "src"
     ],
     "exposed-modules": [
-        "AssetPath"
+        "AssetPath",
+        "AssetPath.Css"
     ],
     "native-modules": true,
     "dependencies": {
