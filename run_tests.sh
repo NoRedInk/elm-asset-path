@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 cd tests
-./build.sh
+./build.sh --yes
 
 echo
 echo "-- Testing with ava x jsdom -----------------------------"
