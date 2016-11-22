@@ -2,7 +2,7 @@ sudo: false
 
 cache:
   directories:
-    - fixtures/elm-stuff/build-artifacts
+    - tests/elm-stuff/build-artifacts
 
 language: node_js
 node_js:
