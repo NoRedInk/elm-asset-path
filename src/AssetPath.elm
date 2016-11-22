@@ -1,25 +1,6 @@
 module AssetPath exposing (Asset(..), url)
 
-{-|
-Module for defining a typed asset path and obtaining its URL.
-
-    import Html exposing (..)
-    import Html.Attributes exposing (..)
-    import AssetPath exposing(Asset(..))
-
-    viewStar : Html msg
-    viewStar =
-        img [ src (AssetPath.url (AssetPath "/assets/star.png")) ]
-            []
-
-By default, the `src` of the image will be "/assets/star.png".
-
-By including a meta tag with the name "assets-root-url" in your HTML,
-you can control which host to direct requests for static assets:
-
-    <meta name="assets-root-url" content="https://cdn.example.com/">
-    ...
-    <img src="https://cdn.example.com/assets/star.png"/>
+{-| The core API of `AssetPath`: a union type and a function.
 
 @docs Asset, url
 -}

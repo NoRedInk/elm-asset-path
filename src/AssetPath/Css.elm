@@ -1,8 +1,8 @@
 module AssetPath.Css exposing (url)
 
 {-|
-Helper module for constructing commonly-used
-asset reference functions in CSS properties.
+Helper for constructing commonly-used CSS functions
+that reference assets.
 
 @doc url
 -}
