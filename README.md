@@ -11,7 +11,7 @@ Install with [native_package_install.py][native_package_install] by adding
 
 ```json
 {
-  "NoRedInk/elm-asset-path": "1.0.0"
+  "NoRedInk/elm-asset-path": "2.0.0"
 }
 ```
 
