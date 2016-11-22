@@ -35,7 +35,10 @@ function chalkify(messages) {
 }
 
 const runElmTest = (t, module) => {
-  const app = module.worker("0");
+  // hardcoded flags equivalent to:
+  // https://github.com/rtfeldman/node-test-runner/blob/348ef6d38884834706cb2052f73bb253af73a8cf/bin/elm-test#L176
+  const flags = {seed: "0", report: "chalk"};
+  const app = module.worker(flags);
   app.ports.emit.subscribe(msg => {
     const msgType = msg[0];
     const data = msg[1];
@@ -48,7 +51,7 @@ const runElmTest = (t, module) => {
         t.pass(message);
       }
       t.end();
-    } else if (msgType === "CHALK" || msgType === "TEST_COMPLETED")  {
+    } else if (msgType === "TEST_COMPLETED")  {
       console.log(chalkify(data));
     }
   });

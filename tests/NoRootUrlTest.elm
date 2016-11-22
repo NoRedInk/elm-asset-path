@@ -1,15 +1,15 @@
 module NoRootUrlTest exposing (..)
 
 import Test exposing (..)
-import Test.Runner.Node exposing (run)
-import Expect
+import Test.Runner.Node exposing (run, TestProgram)
 import Json.Encode exposing (Value)
+import Expect
 import Ports exposing (emit)
 import AssetPath exposing (Asset(..))
 import AssetPath.Css
 
 
-main : Program Value
+main : TestProgram
 main =
     run emit all
 
