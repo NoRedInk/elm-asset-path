@@ -4,7 +4,7 @@ module AssetPath.Css exposing (url)
 Helper for constructing commonly-used CSS functions
 that reference assets.
 
-@doc url
+@docs url
 -}
 
 import AssetPath exposing (Asset)
