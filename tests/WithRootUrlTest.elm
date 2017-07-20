@@ -1,21 +1,14 @@
 module WithRootUrlTest exposing (..)
 
 import Test exposing (..)
-import Test.Runner.Node exposing (run, TestProgram)
 import Json.Encode exposing (Value)
 import Expect
-import Ports exposing (emit)
 import AssetPath exposing (Asset(..))
-
-
-main : TestProgram
-main =
-    run emit all
 
 
 all : Test
 all =
-    describe "url"
+    describe "all"
         [ test "absolute path" <|
             \() ->
                 Expect.equal (AssetPath.url <| AssetPath "/star.png") "https://cdn.elm-lang.org/star.png"
