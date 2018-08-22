@@ -10,11 +10,11 @@ module AssetPath exposing (Asset(..), url)
 {-| Tag a path to a static asset as such.
 -}
 type Asset
-    = Asset String
+    = AssetPath String
 
 
 {-| Get the URL of an asset.
 -}
 url : Asset -> String
-url (Asset string) =
+url (AssetPath string) =
     string
