@@ -20,7 +20,7 @@ before_install:
       cd ..;
     fi
 install:
-  - npm install -g elm@0.18.0 elm-test@0.18.12 elm-format@0.8.0
+  - npm install -g elm@0.18.0 elm-test@0.18.12
   - mv $(npm config get prefix)/bin/elm-make $(npm config get prefix)/bin/elm-make-old
   - printf '%s\n\n' '#!/bin/bash' 'echo "Running elm-make with sysconfcpus -n 2"' '$TRAVIS_BUILD_DIR/sysconfcpus/bin/sysconfcpus -n 2 elm-make-old "$@"' > $(npm config get prefix)/bin/elm-make
   - chmod +x $(npm config get prefix)/bin/elm-make
@@ -30,5 +30,4 @@ install:
   - cd ..
 
 script:
-  - elm-format --elm-version 0.18 --validate src tests
   - elm-test
