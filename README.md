@@ -12,6 +12,6 @@ import AssetPath exposing(Asset(..))
 
 viewStar : Html msg
 viewStar =
-    img [ src <| AssetPath.url <| AssetPath "/assets/star.png" ]
+    img [ src <| AssetPath.url <| Asset "/assets/star.png" ]
         []
 ```

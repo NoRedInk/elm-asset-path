@@ -12,7 +12,7 @@ symmetry =
     fuzz Fuzz.string "AssetPath and url should be symmetrical" <|
         \string ->
             string
-                |> AssetPath.AssetPath
+                |> AssetPath.Asset
                 |> AssetPath.url
                 |> Expect.equal string
 
@@ -22,6 +22,6 @@ cssUrl =
     fuzz Fuzz.string "Css.url should wrap with a url() function" <|
         \string ->
             string
-                |> AssetPath.AssetPath
+                |> AssetPath.Asset
                 |> AssetPath.Css.url
                 |> Expect.equal ("url(" ++ string ++ ")")
