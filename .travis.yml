@@ -30,5 +30,5 @@ install:
   - cd ..
 
 script:
-  - elm-format --validate src tests
+  - elm-format --elm-version 0.18 --validate src tests
   - elm-test
